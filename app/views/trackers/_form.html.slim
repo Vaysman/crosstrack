@@ -1,0 +1,11 @@
+= simple_form_for(@tracker) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :producer
+    = f.input :uid
+    = f.association :user
+
+  .form-actions
+    = f.button :submit
