@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "trackers/edit", :type => :view do
   before(:each) do
-    @tracker = assign(:tracker, Tracker.create!(
-      :name => "MyString",
-      :producer => "MyString",
-      :uid => "MyString",
-      :user => nil
-    ))
+    @tracker = assign(:tracker, FactoryGirl.create(:tracker))
   end
 
   it "renders the edit tracker form" do
@@ -21,7 +16,7 @@ RSpec.describe "trackers/edit", :type => :view do
 
       assert_select "input#tracker_uid[name=?]", "tracker[uid]"
 
-      assert_select "input#tracker_user_id[name=?]", "tracker[user_id]"
+      assert_select "select#tracker_user_id[name=?]", "tracker[user_id]"
     end
   end
 end

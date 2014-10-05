@@ -24,11 +24,11 @@ RSpec.describe TrackersController, :type => :controller do
   # Tracker. As you add validations to Tracker, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.attributes_for(:tracker)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.attributes_for(:tracker, name: nil)
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe TrackersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+         FactoryGirl.attributes_for(:tracker, name: "NewName")
       }
 
       it "updates the requested tracker" do
         tracker = Tracker.create! valid_attributes
         put :update, {:id => tracker.to_param, :tracker => new_attributes}, valid_session
         tracker.reload
-        skip("Add assertions for updated state")
+        expect(tracker.name).to eq("NewName")
       end
 
       it "assigns the requested tracker as @tracker" do
