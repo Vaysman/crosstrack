@@ -4,6 +4,10 @@ ruby "2.1.3"
 
 gem "bundler", "~> 1.7"
 
+group :production do
+  gem "rails_12factor", "~> 0"
+end
+
 group :development do
   gem "spring", "~> 1.1"
   gem "spring-commands-rspec", "~> 1.0"
