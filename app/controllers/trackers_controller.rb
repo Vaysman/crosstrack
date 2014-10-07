@@ -4,7 +4,7 @@ class TrackersController < ApplicationController
   respond_to :html, :json
 
   def index
-    @trackers = Tracker.all
+    @trackers = current_user.trackers
     respond_with(@trackers)
   end
 
@@ -21,7 +21,7 @@ class TrackersController < ApplicationController
   end
 
   def create
-    @tracker = Tracker.new(tracker_params)
+    @tracker = current_user.trackers.build(tracker_params)
     @tracker.save
     respond_with(@tracker)
   end
@@ -38,10 +38,10 @@ class TrackersController < ApplicationController
 
   private
     def set_tracker
-      @tracker = Tracker.find(params[:id])
+      @tracker = current_user.trackers.find(params[:id])
     end
 
     def tracker_params
-      params.require(:tracker).permit(:name, :producer, :uid, :user_id)
+      params.require(:tracker).permit(:name, :producer, :uid)
     end
 end
