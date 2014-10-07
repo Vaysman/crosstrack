@@ -6,7 +6,6 @@ table
       th Name
       th Producer
       th Uid
-      th User
       th
       th
       th
@@ -17,7 +16,6 @@ table
         td = tracker.name
         td = tracker.producer
         td = tracker.uid
-        td = tracker.user
         td = link_to 'Show', tracker
         td = link_to 'Edit', edit_tracker_path(tracker)
         td = link_to 'Destroy', tracker, data: {:confirm => 'Are you sure?'}, :method => :delete
