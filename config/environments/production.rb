@@ -36,7 +36,7 @@ Rails.application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
+  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -77,12 +77,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.smtp_settings = {
-    :port =>           '587',
-    :address =>        'smtp.mandrillapp.com',
-    :user_name =>      ENV['MANDRILL_USERNAME'],
-    :password =>       ENV['MANDRILL_APIKEY'],
-    :domain =>         'heroku.com',
+    :port =>           "587",
+    :address =>        "smtp.mandrillapp.com",
+    :user_name =>      ENV["MANDRILL_USERNAME"],
+    :password =>       ENV["MANDRILL_APIKEY"],
+    :domain =>         "heroku.com",
     :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { host: ENV["APP_NAME"] + ".herokuapp.com"}
 end
