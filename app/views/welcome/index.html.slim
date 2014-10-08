@@ -4,4 +4,6 @@ p
 p
   = link_to "Sign in", new_user_registration_path, "class" => "btn"
 p
+  = link_to "Sign in with Fitbit", user_omniauth_authorize_path(:fitbit)
+p
   = link_to "Trackers", trackers_path, "class" => "btn"
