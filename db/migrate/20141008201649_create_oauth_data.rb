@@ -1,6 +1,6 @@
-class CreateOauths < ActiveRecord::Migration
+class CreateOauthData < ActiveRecord::Migration
   def change
-    create_table :oauths do |t|
+    create_table :oauth_data do |t|
       t.string :uid
       t.string :provider
       t.belongs_to :user, index: true
@@ -8,7 +8,7 @@ class CreateOauths < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :oauths, :uid
-    add_index :oauths, :provider
+    add_index :oauth_data, :uid
+    add_index :oauth_data, :provider
   end
 end
