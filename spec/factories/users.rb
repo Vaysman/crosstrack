@@ -7,7 +7,7 @@ FactoryGirl.define do
     trait :confirmed do
       confirmed_at Time.now
     end
-    
+
     factory :confirmed_user, traits: [:confirmed]
   end
 end
